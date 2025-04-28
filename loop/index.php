@@ -4,6 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      #tt{
+        border-collapse:collapse;
+        margin:20px;
+        box: shadow 2px 2px 15px blue;   
+      }
+
+      #tt td{
+       paddding: 3px; 6px;
+       border: 1px solid #CCc;
+       text-align:center;
+       width:25px;
+       text-shadow:1px 1px 2px #99f;
+      }
+
+      #tt tr:nth-child(1)
+      ,#tt td:nth-child(1){
+       background-color:#999;
+       color:white;
+      }
+
+      #tt td:hover{
+        background-color:green;
+        color:skyblue;
+      }
+
+
+
+    </style>
 </head>
 <body>
 <h1>使用for迴圈來產生以下的數列</h1>
@@ -47,8 +76,8 @@ for ($j=3; $j<100 ; $j++) {
     // echo "<br>";
     // echo "迴圈跑了".$count."次";        
 }
-
 ?>
+
 <h2>九九乘法表</h2>
 <table border=1>
 <?php    
@@ -60,7 +89,25 @@ for ($j=3; $j<100 ; $j++) {
     echo "</tr>";
  }
 ?>
-</tr>
+</table>
+
+<h2>以交叉計算結果呈現九九乘法表</h2>
+<table id='tt' border=1>
+<?php    
+ echo "<tr><td>"; 
+ for ($k=1; $k <=9; $k++) { 
+   echo "<td>".$k."</td>";
+ }
+ echo "</tr>"; 
+
+ for ($i=1; $i <=9 ; $i++) { 
+    echo "<tr>"."<td>".$i."</td>";
+    for ($j=1; $j <=9 ; $j++) {         
+     echo "<td>".$i*$j."</td>";            
+    }
+    echo "</tr>";
+ }
+?>
 </table>
 
 
