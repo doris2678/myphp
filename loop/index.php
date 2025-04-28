@@ -48,14 +48,20 @@ for ($j=3; $j<100 ; $j++) {
     // echo "迴圈跑了".$count."次";        
 }
 
-
-
-
-
-
-
 ?>
-
+<h2>九九乘法表</h2>
+<table border=1>
+<?php    
+ for ($i=1; $i <=9 ; $i++) { 
+    echo "<tr>";
+    for ($j=1; $j <=9 ; $j++) {         
+     echo "<td>".$j."*".$i."=".$i*$j."</td>";            
+    }
+    echo "</tr>";
+ }
+?>
+</tr>
+</table>
 
 
 </body>
