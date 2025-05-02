@@ -110,6 +110,30 @@ for ($j=3; $j<100 ; $j++) {
 ?>
 </table>
 
+<h2>斜角九九乘法表</h2>
+<table id='tt' border=1>
+<?php    
+ echo "<tr><td>"; 
+ for ($k=1; $k <=9; $k++) { 
+   echo "<td>".$k."</td>";
+ }
+ echo "</tr>"; 
+
+ for ($i=1; $i <=9 ; $i++) { 
+    echo "<tr>"."<td>".$i."</td>";
+    for ($j=1; $j <=9 ; $j++) {               
+     if ($j>=$i) {          
+       echo "<td>".$i*$j."</td>";                   
+    }
+  }
+    echo "</tr>";
+ }
+?>
+</table>
+
+
+
+
 
 </body>
 </html>
