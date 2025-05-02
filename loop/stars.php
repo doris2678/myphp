@@ -269,8 +269,7 @@ while ($is_find==0 && $counter<mb_strlen($string)) {
      $counter++;  
      //echo ",";
      //echo $counter;     
-     //echo "<br>";  
-   
+     //echo "<br>";     
 }
 
 if ($is_find){
