@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>站圈畫星星</title>
+    <title>迴圈畫星星</title>
 </head>
 <body>
 <h2>三角形</h2>
@@ -171,7 +171,119 @@
      echo "<br>";
    }
 ?> 
+<h2>尋找字元</h2>
+<?php
+$string="This is a good day";
+$target="1";
+$is_find=0;
+$counter=0;
+while ($is_find==0 && $counter<strlen($string)) {   
 
+   if($string[$counter] == $target){
+     $is_find=1;
+    }
+
+     echo $counter;
+     echo $is_find;     
+     $counter++;  
+     echo ",";
+     echo $counter;     
+     echo "<br>"; 
+   
+}
+
+if ($is_find){
+    echo "目標字元".$target."在字串的第".$counter."個位置";  
+}else{
+    echo "字串中沒有你要找的".$target;
+}
+
+
+?>
+
+<h2>尋找字元-中文字</h2>
+<?php
+$string="今天真是個出遊的好日子啊~";
+$target="天";
+$is_find=0;
+$counter=0;
+echo $string;
+echo "<br>";
+echo $target;
+echo "<br>";
+// echo strlen($string);
+//echo mb_strlenstrlen($string);
+
+while ($is_find==0 && $counter<mb_strlen($string)) {   
+// while ($is_find==0 && $counter<strlen($string)) {       
+
+    if(mb_substr($string,$counter,1) == $target){
+      $is_find=1;
+     }
+    // if(substr($string,$counter,3) == $target){
+    //     $is_find=1;
+    //    }  
+
+    //  echo $counter;
+     //echo $is_find;     
+     $counter++;  
+     //echo ",";
+     //echo $counter;     
+     //echo "<br>";  
+   
+}
+
+if ($is_find){
+    echo "目標字元".$target."在字串的第".$counter."個位置";  
+}else{
+    echo "字串中沒有你要找的".$target;
+}
+?>
+
+
+<h2>尋找字元-中文詞</h2>
+<?php
+$string="今天真是個出遊的好日子啊~";
+$target="出遊";
+$is_find=0;
+$counter=0;
+echo $string;
+echo "<br>";
+echo $target;
+echo "<br>";
+// echo strlen($string);
+// echo mb_strlenstrlen($string);
+
+while ($is_find==0 && $counter<mb_strlen($string)) {   
+// while ($is_find==0 && $counter<strlen($string)) {       
+     echo mb_substr($string,$counter,mb_strlen($target));
+    if(mb_substr($string,$counter,mb_strlen($target)) == $target){
+      $is_find=1;
+     }
+    // if(substr($string,$counter,3) == $target){
+    //     $is_find=1;
+    //    }  
+
+    //  echo $counter;
+     //echo $is_find;     
+     $counter++;  
+     //echo ",";
+     //echo $counter;     
+     //echo "<br>";  
+   
+}
+
+if ($is_find){
+    echo "目標字元".$target."在字串的第".$counter."個位置";  
+}else{
+    echo "字串中沒有你要找的".$target;
+}
+?>
+<hr>
+
+<?php
+  echo mb_strpos($string,$target);//找出要找的字元在字串的位置
+?>
 
 </body>
 </html>
