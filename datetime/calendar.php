@@ -10,7 +10,7 @@
             color:blue;
         }
         table{
-            width:70%;
+            min-width:60%;
             border-collapse:collapse;
             margin:0 auto;
         }
@@ -19,6 +19,40 @@
             text-align:center;
             padding:5px 10px;
         }
+        .today{
+            background-color:yellow;
+            font-weight:bold;
+        }
+        .other-month{
+            background-color:gray;
+            color:#aaa;
+        }
+        .holiday{
+            background-color:pink;
+            color:white;
+        }
+        tr:not(tr:nth-child(1)) td:hover{
+            background-color:lightblue;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:bold;
+        }
+        .pass-date{
+            /* background-color:lightgray; */
+            color:#aaa;
+        }
+
+        .date-num{
+            font-size:14px;
+            text-align:left;
+        }
+
+        .date-event{
+            height:40px;
+            /*font-size:12px;
+            //text-align:left;*/
+        }
+
     </style>
 </head>
 <body>
@@ -30,7 +64,15 @@ $firstDay = date("Y-m-01");
 $firstDayWeek = date("w", strtotime($firstDay));
 $theDaysOfMonth=date("t", strtotime($firstDay));
 
+$spDate=[
+    '2025-05-01'=>'勞動節',
+    '2025-05-11'=>'母親節',
+    '2025-05-30'=>'端午節'
+];
+
+
 ?>
+<h2 style='text-align:center;'><?=date("Y 年 m 月"); ?></h2>
  <table>
      <tr>
          <td>日</td>
@@ -47,11 +89,43 @@ for($i=0;$i<6;$i++){
     
     for($j=0;$j<7;$j++){
         $day=$j+($i*7)-$firstDayWeek;
+        $timestamp = strtotime(" $day days", strtotime($firstDay));
+        $date=date("Y-m-d", $timestamp);
+        $class="";
+
+        if(date("N",$timestamp)>5){
+            $class=$class . " holiday";
+        }
+
         
-        $date=date("Y-m-d", strtotime(" $day days", strtotime($firstDay)));
-        
-        echo "<td>";        
-            echo $date;
+        if($today==$date){            
+            $class=$class . " today";
+        }else if(date("m",$timestamp)!=date("m",strtotime($firstDay))){
+            $class=$class ." other-month";
+        }
+
+
+        if($timestamp<strtotime($today)){
+            $class=$class . " pass-date";
+        }
+
+        echo "<td class='$class' data-date='$date'>";     
+
+        echo "<div class='date-num'>";   
+            echo date("d",$timestamp);
+        echo "</div>";   
+
+        echo "<div class='date-event'>";   
+            if (isset($spDate[$date])) {
+                echo $spDate[$date];                
+            }
+
+            
+               
+        echo "</div>";   
+
+
+
         echo "</td>";
     }
 
