@@ -108,7 +108,12 @@
  <h1>線上日曆</h1>  
 
  <?php
-$month=5;
+if(isset($_GET['month'])){
+    $month=$_GET['month'];
+}else{
+    $month=date("m");
+}
+//$month=5;
 $today = date("Y-$month-d");
 $firstDay = date("Y-$month-01");
 $firstDayWeek = date("w", strtotime($firstDay));
@@ -164,7 +169,15 @@ for($i=0;$i<$theDaysOfMonth;$i++){
 /* echo "<pre>";
 print_r($monthDays);
 echo "</pre>"; */
+?>
 
+<div style="display:flex;width:60%;margin:0 auto;justify-content:space-between;">
+
+    <a href="?">上一月</a>
+    <a href="?">下一月</a>
+</div>
+
+<?php
 
 //建立外框及標題
 echo "<div class='box-container'>";
