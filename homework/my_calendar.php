@@ -48,7 +48,7 @@ $theDaysOfMonth=date("t", strtotime($firstDay));// t: 指定月份的天数	28 �
             text-shadow:1px 1px 3px rgba(0,0,0,0.5);/* <x-offset> <y-offset> <blur-radius> <color>; */
             margin-top:20px;
         }
-
+              
         .container{
             max-width:900px;      
             height:600px;         
@@ -158,16 +158,33 @@ $theDaysOfMonth=date("t", strtotime($firstDay));// t: 指定月份的天数	28 �
         }
 
        .nav-links {
-            text-align: center;
-            margin: 20px 0;
+        margin-left:30px;
        }
 
-       .nav-links a {
-            text-decoration: none;
-            font-size: 18px;
-            margin: 0 10px;
-            color: white;
-            font-weight: bold;
+       .form-container{
+            max-width:100%;      
+            height:100px;         
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            margin-top:20px;
+       }
+
+       .link_btn{
+          text-decoration: none;          
+          width:80px;          
+          height:30px;
+          text-align:center;  
+          font-size:20px;
+          font-weight: bold;
+          background-color:rgb(184, 79, 140);
+          color:white;
+          border: 2px solid black;          
+          cursor:pointer;
+          margin:auto;           
+          padding:5px;      
+          border-radius:5px;
+          box-shadow:1 px 1px 5px #eee; 
         }
 
         .nav-links a:hover {
@@ -177,15 +194,16 @@ $theDaysOfMonth=date("t", strtotime($firstDay));// t: 指定月份的天数	28 �
         .month-search{
            font-size:20px;
            text-align:center;
-           color:white;
-           margin-bottom:20px;           
+           color:white;           
+           margin-bottom:0px;           
         }
 
         .month-search input[type="number"]{
-         width:80px;
+         width:65px;
          padding:5px;
          font-size:20px;
          text-align:center;
+         margin-right:5px;
         }
 
         .month-search input[type="submit"]{
@@ -206,24 +224,25 @@ $theDaysOfMonth=date("t", strtotime($firstDay));// t: 指定月份的天数	28 �
     </style>
 </head>
 <body>
-<h2 ><?= $year ?> 年 <?= $month ?> 月 </h2>
-<div class="nav-links">    
-    <a href="?year=<?= $year-1 ?>&month=<?= $month ?>"> << 上一年 &nbsp&nbsp&nbsp&nbsp </a>
-    <a href="?year=<?= $prevYear ?>&month=<?= $prevMonth ?>"> < 上一月 &nbsp&nbsp&nbsp&nbsp </a>
-    <a href="?year=<?= date("Y") ?>&month=<?= date("m") ?>">  今天 &nbsp&nbsp&nbsp&nbsp </a>
-    <a href="?year=<?= $nextYear ?>&month=<?= $nextMonth ?>"> 下一月 > &nbsp&nbsp&nbsp&nbsp </a>
-    <a href="?year=<?= $year+1 ?>&month=<?= $month ?>">  下一年 >></a>
-</div>
-
-<div class="month-search">
-   <form method="get" action="">
-    <label for="year">年：</label>
+<!-- <h2 ><?= $year ?> 年 <?= $month ?> 月 </h2> -->
+<div class="form-container">
+  <div class="month-search">
+   <form method="get" action="">    
     <input type="number" id="year" name="year" value="<?=$year?>" min="1900" max="2100">
-    <label for="month">月：</label>
+    <label for="year">年</label>    
     <input type="number" id="month" name="month" value="<?=$month?>" min="1" max="12">
+    <label for="month">月</label>
            <input type="submit" value="查詢">
-          </form>
-       </div>
+    </form>
+  </div>
+  <div class="nav-links">
+    <a href="?year=<?= $year-1 ?>&month=<?= $month ?>" class="link_btn">上一年</a>
+    <a href="?year=<?= $year+1 ?>&month=<?= $month ?>" class="link_btn">下一年</a>    
+    <a href="?year=<?= $prevYear ?>&month=<?= $prevMonth ?>" class="link_btn">上個月</a>   
+    <a href="?year=<?= $nextYear ?>&month=<?= $nextMonth ?>" class="link_btn">下個月</a>
+    <a href="?year=<?= date("Y") ?>&month=<?= date("m") ?>" class="link_btn">今天</a>
+  </div>
+</div>
        
  <?php
    $spDate=[
